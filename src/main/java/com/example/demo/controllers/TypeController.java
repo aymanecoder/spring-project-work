@@ -20,30 +20,35 @@ public class TypeController {
   private final TypeService typeService;
 
     @GetMapping("/types")
+    @PreAuthorize("hasAuthority('admin:read')")
     public List<Type> getAllTypes() {
         log.info("getAllTypes");
         return typeService.getAllTypes();
     }
 
     @GetMapping("type/{id}")
+    @PreAuthorize("hasAuthority('admin:read')")
     public Type getTypeById(@PathVariable Long id) {
         log.info("getTypeById");
         return typeService.getTypeById(id);
     }
 
     @PostMapping("/type")
+    @PreAuthorize("hasAuthority('admin:create')")
     public Type createType(@RequestBody Type type) {
         log.info("createType");
         return typeService.createType(type);
     }
 
     @PutMapping("type/{id}")
+    @PreAuthorize("hasAuthority('admin:update')")
     public Type updateType(@PathVariable Long id, @RequestBody Type type) {
         log.info("Updating type");
         return typeService.updateType(id, type);
     }
 
     @DeleteMapping("type/{id}")
+    @PreAuthorize("hasAuthority('admin:delete')")
     public void deleteType(@PathVariable Long id) {
         log.info("Deleting type");
         typeService.deleteType(id);

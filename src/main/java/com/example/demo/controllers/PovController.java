@@ -5,6 +5,7 @@ import com.example.demo.entities.Pov;
 import com.example.demo.services.PovService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.logging.Logger;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/v1/management")
+@PreAuthorize("hasRole('MANGER')")
 public class PovController {
     private static final Logger logger = Logger.getLogger(String.valueOf(PovController.class));
     private final PovService povService;

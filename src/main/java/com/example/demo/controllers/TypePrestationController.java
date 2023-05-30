@@ -19,26 +19,31 @@ public class TypePrestationController {
     private final TypePrestationService typePrestationService;
 
     @GetMapping("/Tps")
+    @PreAuthorize("hasAuthority('admin:read')")
     public List<TypePrestation> getAllTypePrestations() {
         return typePrestationService.getAllTypePrestations();
     }
 
     @GetMapping("Tp/{id}")
+    @PreAuthorize("hasAuthority('admin:read')")
     public TypePrestation getTypePrestationById(@PathVariable Long id) {
         return typePrestationService.getTypePrestationById(id);
     }
 
     @PostMapping("Tp")
+    @PreAuthorize("hasAuthority('admin:create')")
     public TypePrestation createTypePrestation(@RequestBody TypePrestation typePrestation) {
         return typePrestationService.createTypePrestation(typePrestation);
     }
 
     @PutMapping("Tp/{id}")
+    @PreAuthorize("hasAuthority('admin:update')")
     public TypePrestation updateTypePrestation(@PathVariable Long id, @RequestBody TypePrestation typePrestation) {
         return typePrestationService.updateTypePrestation(id, typePrestation);
     }
 
     @DeleteMapping("Tp/{id}")
+    @PreAuthorize("hasAuthority('admin:delete')")
     public void deleteTypePrestation(@PathVariable Long id) {
         typePrestationService.deleteTypePrestation(id);
     }

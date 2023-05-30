@@ -25,12 +25,14 @@ public class ClientController {
     private final static Logger logger = Logger.getLogger(String.valueOf(ClientController.class));
 
     @GetMapping("clients")
+    @PreAuthorize("hasAuthority('admin:read')")
     public List<Client> getAllClients() {
         logger.info("getAllClients");
         return clientService.getAllClients();
     }
 
     @GetMapping("client/{id}")
+    @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<Client> getClientById(@PathVariable Long id) {
         logger.info("getClientById");
         Optional<Client> client = clientService.getClientById(id);
@@ -42,6 +44,7 @@ public class ClientController {
     }
 
     @PostMapping("client")
+    @PreAuthorize("hasAuthority('admin:create')")
     public ResponseEntity<Client> addClient(@RequestBody Client client) {
         logger.info("Adding client");
         Client addedClient = clientService.addClient(client);
@@ -49,6 +52,7 @@ public class ClientController {
     }
 
     @DeleteMapping("client/{id}")
+    @PreAuthorize("hasAuthority('admin:delete')")
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         logger.info("Removing client");
         clientService.deleteClient(id);
@@ -56,6 +60,7 @@ public class ClientController {
     }
 
     @PutMapping("client/{id}")
+    @PreAuthorize("hasAuthority('admin:update')")
     public ResponseEntity<Client> updateClient(@PathVariable Long id, @RequestBody Client client) {
         logger.info("updating client");
         Client updatedClient = clientService.updateClient(id, client);

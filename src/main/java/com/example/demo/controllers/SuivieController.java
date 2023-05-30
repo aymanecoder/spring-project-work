@@ -4,14 +4,16 @@ import com.example.demo.entities.Suivi;
 import com.example.demo.services.SuivieService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-@RestController
-@RequestMapping("/api/v1/management")
 @Slf4j
 @AllArgsConstructor
+@RestController
+@RequestMapping("/api/v1/management")
+@PreAuthorize("hasRole('MANGER')")
+
 public class SuivieController {
     private final SuivieService suivieService;
 

@@ -22,7 +22,9 @@ import java.util.logging.Logger;
 public class ApplianceController {
     private final ApplianceService applianceService;
     private final static Logger logger = Logger.getLogger(String.valueOf(ApplianceController.class));
+
     @GetMapping("/appliances")
+    @PreAuthorize("hasAuthority('admin:read')")
     public List<Apliance> getAllAppliances() {
         logger.info("ressources are available");
         return applianceService.getAllAppliances();
@@ -31,6 +33,7 @@ public class ApplianceController {
 
 
     @GetMapping("appliance/{id}")
+    @PreAuthorize("hasAuthority('admin:read')")
     public Apliance getApplianceById(@PathVariable Long id) {
 
         logger.info("ressource are available");
@@ -39,6 +42,7 @@ public class ApplianceController {
 
     @PostMapping("/appliance")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('admin:create')")
     public Apliance createAppliance(@RequestBody Apliance appliance) {
         logger.info("Appliance created");
         return applianceService.createAppliance(appliance);
@@ -46,6 +50,7 @@ public class ApplianceController {
     }
 
     @PutMapping("appliance/{id}")
+    @PreAuthorize("hasAuthority('admin:update')")
     public Apliance updateAppliance(@PathVariable Long id, @RequestBody Apliance appliance) {
         logger.info("appliance updated with success");
         return applianceService.updateAppliance(id, appliance);
@@ -53,7 +58,7 @@ public class ApplianceController {
 
     @DeleteMapping("appliance/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-
+    @PreAuthorize("hasAuthority('admin:delete')")
     public void deleteAppliance(@PathVariable Long id) {
        logger.info("appliance deleted");
         applianceService.deleteAppliance(id);

@@ -24,17 +24,20 @@ public class ContactController {
     private static final Logger loger = Logger.getLogger(String.valueOf(ContactController.class));
     private final ContactService contactService;
     @GetMapping("/contacts")
+    @PreAuthorize("hasAuthority('admin:read')")
     public List<Contact> getContacts() {
         loger.info("getContacts");
         return contactService.getAllcontacts();
     }
     @GetMapping("/contact/{id}")
+    @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<Contact> getContactById(@PathVariable Long id){
         loger.info("getContactById");
        return ResponseEntity.ok(contactService.getContactById(id));
     }
 
     @PostMapping("/contact")
+    @PreAuthorize("hasAuthority('admin:create')")
     public ResponseEntity<Contact> addContact(@RequestBody Contact contact){
         loger.info("addContact");
         Contact addContact = contactService.addContact(contact);
@@ -42,6 +45,7 @@ public class ContactController {
 
     }
     @PutMapping("/contact/{id}")
+    @PreAuthorize("hasAuthority('admin:update')")
     public ResponseEntity<Contact> updateContact(@PathVariable Long id, @RequestBody Contact contact){
         loger.info("Update contact");
         Contact updateContact = contactService.updateContact(id,contact);
@@ -53,6 +57,7 @@ public class ContactController {
         }
     }
     @DeleteMapping("/contact/{id}")
+    @PreAuthorize("hasAuthority('admin:delete')")
     public ResponseEntity<?> deleteContact(@PathVariable Long id){
         loger.info("Delete contact");
         contactService.deleteContact(id);
