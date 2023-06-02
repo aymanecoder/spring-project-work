@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ApplianceController {
     private final ApplianceService applianceService;
     private final static Logger logger = Logger.getLogger(String.valueOf(ApplianceController.class));
@@ -27,6 +28,7 @@ public class ApplianceController {
     @PreAuthorize("hasAuthority('admin:read')")
     public List<Apliance> getAllAppliances() {
         logger.info("ressources are available");
+
         return applianceService.getAllAppliances();
 
     }
