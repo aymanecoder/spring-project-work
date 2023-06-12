@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientController {
      private final  ClientService clientService ;
     private final static Logger logger = Logger.getLogger(String.valueOf(ClientController.class));

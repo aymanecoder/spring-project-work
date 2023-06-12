@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ContactController {
 
     private static final Logger loger = Logger.getLogger(String.valueOf(ContactController.class));

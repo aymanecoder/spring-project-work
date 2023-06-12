@@ -14,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/management")
 @PreAuthorize("hasRole('MANGER')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SceanceController {
 
     private final SceanceService sceanceService;

@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 @AllArgsConstructor
 @RequestMapping("/api/v1/management")
 @PreAuthorize("hasRole('MANGER')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PovController {
     private static final Logger logger = Logger.getLogger(String.valueOf(PovController.class));
     private final PovService povService;

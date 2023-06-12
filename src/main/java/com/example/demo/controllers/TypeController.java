@@ -16,6 +16,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/api/v1/admin")
 @PreAuthorize("hasRole('ADMIN')")
+@CrossOrigin(origins = "http://localhost:4200")
 public class TypeController {
   private final TypeService typeService;
 
