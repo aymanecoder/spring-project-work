@@ -39,7 +39,7 @@ public class TypeServiceImp implements TypeService{
 
     @Override
     public void deleteType(Long id) {
-        Type existingType = getTypeById(id);
-        typeRepository.delete(existingType);
+
+        typeRepository.deleteById(id);
     }
 }

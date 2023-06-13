@@ -22,6 +22,6 @@ public class TypePrestation {
     private String libelle;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "typePrestation")
+    @OneToMany(mappedBy = "typePrestation",cascade = CascadeType.ALL)
     private List<Suivi> suivis;
 }

@@ -23,7 +23,7 @@ public class Type {
     private String libelle;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "type")
+    @OneToMany(mappedBy = "type",cascade = CascadeType.ALL)
     private List<Apliance> appliances;
 
 }
