@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/management")
+@RequestMapping("/api/v1/manager")
 @PreAuthorize("hasRole('MANGER')")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SceanceController {

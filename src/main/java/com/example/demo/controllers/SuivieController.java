@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/v1/management")
+@RequestMapping("/api/v1/manager")
 @PreAuthorize("hasRole('MANGER')")
 @CrossOrigin(origins = "http://localhost:4200")
 public class SuivieController {
